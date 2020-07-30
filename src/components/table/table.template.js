@@ -9,16 +9,19 @@ function createCell() {
     `
 }
 
-function toColumnName(col) {
+function toColumn(col) {
   return `
-    <div class="column">${col}</div>
+    <div class="column">
+        ${col}
+        <div class="col-resize"></div>
+    </div>
     `
 }
 
-function createRow(namber, content = '') {
+function createRow(number, content = '') {
   return `
     <div class="row">
-        <div class="row-info">${namber}</div>
+        <div class="row-info">${number}</div>
         <div class="row-data">${content}</div>
     </div>
     `
@@ -34,7 +37,7 @@ export function createTable(rowsCount = 15) {
   const colsNames = new Array(colsCount)
       .fill('')
       .map(toChar)
-      .map(toColumnName)
+      .map(toColumn)
       .join('')
   const cellsInRow = new Array(colsCount)
       .fill(createCell())

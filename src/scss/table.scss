@@ -42,7 +42,7 @@
     border: 1px solid $border-color;
     border-top: none;
     border-left: none;
-
+    position: relative;
 
   }
 
@@ -60,8 +60,22 @@
 
     &.selected {
       border: none;
-      outline: 2px solid #3c74ff;
+      outline: 2px solid $primary-color;
       z-index: 2;
+    }
+  }
+
+  .col-resize {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: 4px;
+    opacity: 0;
+    background: $primary-color;
+    &:hover {
+      opacity: 1;
+      cursor: col-resize
     }
   }
 }
