@@ -15,6 +15,7 @@ const jsLoaders = () => {
       loader: 'babel-loader',
       options: {
         presets: ['@babel/preset-env'],
+        plugins: ['@babel/plugin-proposal-class-properties']
       },
     },
   ]
@@ -63,7 +64,7 @@ module.exports = {
     }),
     new MiniCssExtractPlugin({
       filename: falename('css'),
-    }),
+    })
   ],
   module: {
     rules: [
