@@ -15,7 +15,8 @@ function toCell(rowIndex) {
     return `
     <div class="cell" 
          contenteditable="true"
-         data-col="${colIndex}" 
+         data-col="${colIndex}"
+         data-type="cell" 
          data-id="${rowIndex}:${colIndex}"></div>
   `
   }
