@@ -25,15 +25,15 @@ export class TableSelection {
     // console.log(cell2.dataset.id)
     console.log(this.table)
 
-    let ist = Number(cell1.dataset.id.charAt(0))
-    let jst = Number(cell1.dataset.id.slice(-1))
+    const ist0 = Number(cell1.dataset.id.charAt(0))
+    const jst0 = Number(cell1.dataset.id.slice(-1))
     const iend = Number(cell2.dataset.id.charAt(0))
     const jend = Number(cell2.dataset.id.slice(-1))
-    for (ist; ist <= iend; ist++) {
-      for (jst; jst <= jend; jst++) {
+    for (let ist = ist0; ist <= iend; ist++) {
+      for (let jst = jst0; jst <= jend; jst++) {
         const $nextEl = this.table.find(`[data-id="${ist}:${jst}"]`)
-            .addClass('selected')
         this.group.push($nextEl)
+        $nextEl.addClass('selected')
       }
     }
   }
