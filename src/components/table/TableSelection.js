@@ -6,7 +6,6 @@ export class TableSelection {
     this.current = null
   }
 
-  // $el instanceof Dom === true
   select($el) {
     this.clear()
     $el.focus().addClass(TableSelection.className)
@@ -22,8 +21,6 @@ export class TableSelection {
   selectGroup($group = []) {
     this.clear()
     this.group = $group
-    // eslint-disable-next-line no-debugger
-    // debugger
     this.group.forEach($el => $el.addClass(TableSelection.className))
   }
 }
