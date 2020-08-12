@@ -1,14 +1,10 @@
 import {ExcelComponent} from '@core/ExcelComponent';
 import {createTable} from '@/components/table/table.template';
 import {resizeHandler} from '@/components/table/table.resize';
-import {
-  isCell,
-  matrix,
-  nextSelector,
-  shouldResize
-} from '@/components/table/table.functions';
+import {isCell, matrix, nextSelector, shouldResize} from './table.functions';
 import {TableSelection} from '@/components/table/TableSelection';
 import {$} from '@core/dom';
+import * as actions from '@/redux/actions';
 
 
 export class Table extends ExcelComponent {
@@ -19,11 +15,11 @@ export class Table extends ExcelComponent {
       name: 'Table',
       listeners: ['mousedown', 'keydown', 'input'],
       ...options
-    });
+    })
   }
 
   toHTML() {
-    return createTable(20)
+    return createTable(20, this.store.getState())
   }
 
   prepare() {
@@ -39,9 +35,9 @@ export class Table extends ExcelComponent {
     this.$on('formula:done', () => {
       this.selection.current.focus()
     })
-    this.$subscribe(state => {
-      console.log('TableState', state)
-    })
+    // this.$subscribe(state => {
+    //   console.log('TableState', state)
+    // })
   }
 
   selectCell($cell) {
@@ -52,7 +48,7 @@ export class Table extends ExcelComponent {
   async resizeTable(event) {
     try {
       const data = await resizeHandler(this.$root, event)
-      console.log('Resize data', data)
+      this.$dispatch(actions.tableResize(data))
     } catch (e) {
       console.warn('Resize error', e.message)
     }
@@ -85,7 +81,7 @@ export class Table extends ExcelComponent {
 
     const {key} = event
 
-    if (keys.includes(event.key) && !event.shiftKey) {
+    if (keys.includes(key) && !event.shiftKey) {
       event.preventDefault()
       const id = this.selection.current.id(true)
       const $next = this.$root.find(nextSelector(key, id))
