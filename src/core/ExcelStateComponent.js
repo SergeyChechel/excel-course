@@ -1,8 +1,8 @@
-import {ExcelComponent} from '@core/ExcelComponent';
+import {ExcelComponent} from '@core/ExcelComponent'
 
 export class ExcelStateComponent extends ExcelComponent {
   constructor(...args) {
-    super(...args);
+    super(...args)
   }
 
   get template() {

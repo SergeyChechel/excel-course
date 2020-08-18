@@ -1,4 +1,4 @@
-import {isEqual} from '@core/utils';
+import {isEqual} from '@core/utils'
 
 export class StoreSubscriber {
   constructor(store) {
@@ -21,6 +21,7 @@ export class StoreSubscriber {
           })
         }
       })
+
       this.prevState = this.store.getState()
     })
   }

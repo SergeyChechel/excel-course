@@ -1,6 +1,6 @@
-import {capitalize} from '@core/utils';
+import {capitalize} from '@core/utils'
 
-export class DOMListener {
+export class DomListener {
   constructor($root, listeners = []) {
     if (!$root) {
       throw new Error(`No $root provided for DomListener!`)
@@ -19,6 +19,7 @@ export class DOMListener {
         )
       }
       this[method] = this[method].bind(this)
+      // Тоже самое что и addEventListener
       this.$root.on(listener, this[method])
     })
   }
@@ -26,12 +27,14 @@ export class DOMListener {
   removeDOMListeners() {
     this.listeners.forEach(listener => {
       const method = getMethodName(listener)
-      console.log('removeDOM', method)
       this.$root.off(listener, this[method])
     })
   }
 }
 
+// input => onInput
 function getMethodName(eventName) {
   return 'on' + capitalize(eventName)
 }
+
+

@@ -10,13 +10,12 @@
   padding: 8px 4px 0;
   display: flex;
   justify-content: space-between;
-  //background: aquamarine;
 
-  .input {
+  & .input {
     margin: 0;
     padding: 2px 7px;
     min-width: 1px;
-    color: black;
+    color: #000;
     border: 1px solid transparent;
     border-radius: 2px;
     height: 20px;
@@ -25,15 +24,15 @@
     outline: none;
 
     &:hover {
-      border: 2px solid $border-color;
+      border: 1px solid $border-color;
     }
 
     &:focus {
       border: 2px solid #1a73e8;
     }
-
   }
-  & .button {
+
+  .button {
     @include button(red);
   }
 

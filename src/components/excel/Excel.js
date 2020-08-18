@@ -1,6 +1,6 @@
-import {$} from '@core/dom';
-import {Emitter} from '@core/Emitter';
-import {StoreSubscriber} from '@core/StoreSubscriber';
+import {$} from '@core/dom'
+import {Emitter} from '@core/Emitter'
+import {StoreSubscriber} from '@core/StoreSubscriber'
 
 export class Excel {
   constructor(selector, options) {
@@ -22,11 +22,11 @@ export class Excel {
     this.components = this.components.map(Component => {
       const $el = $.create('div', Component.className)
       const component = new Component($el, componentOptions)
-
       $el.html(component.toHTML())
       $root.append($el)
       return component
     })
+
     return $root
   }
 

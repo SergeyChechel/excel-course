@@ -3,7 +3,7 @@
 
 .excel__table {
   position: absolute;
-  left:0;
+  left: 0;
   right: 0;
   top: $header-height + $toolbar-height + $formula-height;
   overflow-x: auto;
@@ -17,6 +17,7 @@
   }
 
   .row-info {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -25,7 +26,6 @@
     border: 1px solid $border-color;
     background: #f8f9fa;
     border-top: none;
-    position: relative;
   }
 
   .row-data {
@@ -33,18 +33,17 @@
   }
 
   .column {
+    position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
     background: #f8f9fa;
     min-width: 40px;
     width: $cell-width;
-    height: 100%;
     border: 1px solid $border-color;
-    border-top: none;
-    border-left: none;
-    position: relative;
-
+    border-top: 0;
+    border-left: 0;
+    height: 100%;
   }
 
   .cell {
@@ -53,11 +52,12 @@
     width: $cell-width;
     height: 100%;
     border: 1px solid #e2e3e3;
-    border-top: none;
-    border-left: none;
+    border-top: 0;
+    border-left: 0;
     color: #111;
     white-space: nowrap;
     outline: none;
+
 
     &.selected {
       border: none;
@@ -70,29 +70,31 @@
     position: absolute;
     bottom: 0;
     right: 0;
-    opacity: 0;
     background: $primary-color;
+    opacity: 0;
     z-index: 1000;
-    &:hover {
-      opacity: 1 !important;
-    }
 
+    &:hover {
+      opacity: 1!important;
+    }
   }
 
   .col-resize {
     top: 0;
     width: 4px;
+
     &:hover {
-      cursor: col-resize
+      cursor: col-resize;
     }
   }
 
   .row-resize {
     left: 0;
     height: 4px;
-    &:hover {
-      cursor: row-resize
-    }
 
+    &:hover {
+      cursor: row-resize;
+    }
   }
+
 }

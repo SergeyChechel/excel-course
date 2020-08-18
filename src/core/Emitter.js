@@ -2,41 +2,42 @@ export class Emitter {
   constructor() {
     this.listeners = {}
   }
+
   // dispatch, fire, trigger
-  // Уведомл слушателей если они есть
-  // table.emit('able-select', {a: 1})
-  emit(eventName, ...args) {
-    if (!Array.isArray(this.listeners[eventName])) {
+  // Уведомляем слушателе если они есть
+  // table.emit('table:select', {a: 1})
+  emit(event, ...args) {
+    if (!Array.isArray(this.listeners[event])) {
       return false
     }
-    this.listeners[eventName].forEach(listener => {
+    this.listeners[event].forEach(listener => {
       listener(...args)
     })
     return true
   }
-  // on, listen ...
-  // Подписываемся на уведомления
-  // Добавл нового слушателя
-  // formula.subscribe('table-select', () => {})
-  subscribe(eventName, fn) {
-    this.listeners[eventName] = this.listeners[eventName] || []
-    this.listeners[eventName].push(fn)
+
+  // on, listen
+  // Подписываемся на уведомление
+  // Добавляем нового слушателя
+  // formula.subscribe('table:select', () => {})
+  subscribe(event, fn) {
+    this.listeners[event] = this.listeners[event] || []
+    this.listeners[event].push(fn)
     return () => {
-      this.listeners[eventName] =
-              this.listeners[eventName].filter(listener => listener !== fn)
+      this.listeners[event] =
+        this.listeners[event].filter(listener => listener !== fn)
     }
   }
 }
+
 // Example
 // const emitter = new Emitter()
 //
-// const unsub = emitter
-//     .subscribe('vladilen', data => console.log('Sub:', data))
-//
-// emitter.emit('13213246', 42)
+// const unsub = emitter.subscribe('vladilen', data => console.log(data))
+// emitter.emit('1231231', 42)
 //
 // setTimeout(() => {
-//   emitter.emit('vladilen', 'After two seconds')
+//   emitter.emit('vladilen', 'After 2 seconds')
 // }, 2000)
 //
 // setTimeout(() => {
@@ -44,5 +45,5 @@ export class Emitter {
 // }, 3000)
 //
 // setTimeout(() => {
-//   emitter.emit('vladilen', 'After four seconds')
+//   emitter.emit('vladilen', 'After 4 seconds')
 // }, 4000)
