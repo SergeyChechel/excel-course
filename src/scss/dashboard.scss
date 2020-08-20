@@ -67,17 +67,6 @@
     @include clear-list;
   }
 
-  a {
-    text-decoration: none;
-    cursor: pointer;
-    color: #202124;
-    font-size: 14px;
-
-    &:hover {
-      text-decoration: underline;
-    }
-  }
-
   &__record {
     display: flex;
     justify-content: space-between;
