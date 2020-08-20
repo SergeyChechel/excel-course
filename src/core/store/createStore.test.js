@@ -1,4 +1,4 @@
-import {createStore} from './createStore';
+import {createStore} from './createStore'
 
 const initialState = {
   count: 0
@@ -11,7 +11,6 @@ const reducer = (state = initialState, action) => {
   return state
 }
 
-
 describe('createStore:', () => {
   let store
   let handler
@@ -20,9 +19,11 @@ describe('createStore:', () => {
     store = createStore(reducer, initialState)
     handler = jest.fn()
   })
+
   test('should return store object', () => {
     expect(store).toBeDefined()
     expect(store.dispatch).toBeDefined()
+    expect(store.subscribe).toBeDefined()
     expect(store.getState).not.toBeUndefined()
   })
 
@@ -39,7 +40,7 @@ describe('createStore:', () => {
     expect(store.getState().count).toBe(1)
   })
 
-  test('should NOT change state if action don`t exists', () => {
+  test('should NOT change state if action don\'t exists', () => {
     store.dispatch({type: 'NOT_EXISTING_ACTION'})
     expect(store.getState().count).toBe(0)
   })
@@ -55,6 +56,7 @@ describe('createStore:', () => {
 
   test('should NOT call sub if unsubscribe', () => {
     const sub = store.subscribe(handler)
+
     sub.unsubscribe()
 
     store.dispatch({type: 'ADD'})
@@ -67,6 +69,7 @@ describe('createStore:', () => {
       setTimeout(() => {
         store.dispatch({type: 'ADD'})
       }, 500)
+
       setTimeout(() => {
         expect(store.getState().count).toBe(1)
         resolve()

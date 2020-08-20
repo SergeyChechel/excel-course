@@ -22,16 +22,16 @@ export function changeText(data) {
   }
 }
 
+export function updateDate() {
+  return {
+    type: UPDATE_DATE
+  }
+}
+
 export function changeStyles(data) {
   return {
     type: CHANGE_STYLES,
     data
-  }
-}
-
-export function updateDate() {
-  return {
-    type: UPDATE_DATE,
   }
 }
 

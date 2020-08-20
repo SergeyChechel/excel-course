@@ -1,5 +1,5 @@
-import {Router} from './Router';
-import {Page} from '../Page';
+import {Router} from './Router'
+import {Page} from '../page/Page'
 
 class DashboardPage extends Page {
   getRoot() {
@@ -10,7 +10,7 @@ class DashboardPage extends Page {
 }
 class ExcelPage extends Page {}
 
-describe('Router', () => {
+describe('Router:', () => {
   let router
   let $root
 
